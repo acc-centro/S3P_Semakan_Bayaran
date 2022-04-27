@@ -1,0 +1,7 @@
+{
+  "name": "semakan-bayaran-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
