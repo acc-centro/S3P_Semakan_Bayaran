@@ -1,49 +1,81 @@
 import React from 'react';
-import { IonFooter, IonLabel, IonCard, IonText, IonButton, IonInput, IonHeader, IonItem, IonPage, IonTitle, IonToolbar, IonCheckbox, IonCardSubtitle, IonCardContent } from '@ionic/react';
+import {
+  IonFooter, 
+  IonLabel, 
+  IonCard,
+  IonText, 
+  IonButton, 
+  IonInput, 
+  IonHeader, 
+  IonItem, 
+  IonPage, 
+  IonTitle, 
+  IonToolbar, 
+  IonCardSubtitle, 
+  IonCardContent, 
+  IonImg,
+  IonGrid,
+  IonRow,
+  IonCol
+
+} from '@ionic/react';
+
 import './Home.css';
+import { IonIcon } from '@ionic/react';
+import { search} from 'ionicons/icons';
+
 
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle class = "ion-text-center"><h1>Semakan Bayaran</h1></IonTitle>
-          <IonText class="ion-text-center"><p>kerajaan Negeri Sabah</p></IonText>
+    <style>{"body { background-color: #93CAED; }"}</style>
+    <IonCard color="dark">
+
+       <IonHeader>
+        <IonToolbar color="primary">
+        <IonGrid>
+           <IonRow>
+             <IonCol size="3" offset="4.5" >
+               <IonImg src='https://s3p.sabah.gov.my/assets/message.svg' />
+             </IonCol>
+           </IonRow>
+         </IonGrid>
+          <IonTitle class = "ion-text-center"><h1><b>SEMAKAN BAYARAN</b></h1></IonTitle>
+          <IonText class="ion-text-center"><p><b>kerajaan Negeri Sabah</b></p></IonText>
         </IonToolbar>
       </IonHeader>
 
-<IonCard>
-<IonCardContent>
-<form className="ion-padding">
-  <IonItem>
-    <IonLabel position="floating">No.MyKad</IonLabel>
-    <IonInput type ="text"  />
+
+<IonCardContent >
+    <form className="ion-padding" method="post" action="pages/Lists.tsx">
+
+  <IonItem color="dark">
+    <IonLabel position="floating" color="light">No.Kad Pengenalan</IonLabel>
+    <IonInput type="text" />
   </IonItem>
 
-  <IonItem>
-    <IonLabel position="floating">No.Akaun Bank</IonLabel>
+  <IonItem color="dark">
+    <IonLabel position="floating" color="light">No.Akaun Bank</IonLabel>
     <IonInput type="number" maxlength={16} />
-  </IonItem>
+  </IonItem >
 
-  <IonItem lines="none">
-    <IonLabel>Remember Me</IonLabel>
-    <IonCheckbox defaultChecked={true} slot="start" />
-  </IonItem>
-
-  <IonButton className="ion-margin-top" type="submit" expand="block">
-    Cari Maklumat
+  <IonButton className="ion-margin-top" type="submit" expand="block" href="/Lists">   
+    <IonIcon icon={search} slot="start" />
+      Cari Maklumat
   </IonButton>
 
-</form>
-</IonCardContent>
+    </form>
+  </IonCardContent>
+
 </IonCard>
 
-<IonFooter>
-<IonCardSubtitle class="ion-text-center">
-    2022 © Kerajaan Negeri Sabah
-  </IonCardSubtitle>
-</IonFooter>
-  </IonPage>
+  <IonFooter>
+    <IonCardSubtitle class="ion-text-center"  color="light">
+      2022 © Kerajaan Negeri Sabah
+    </IonCardSubtitle>
+  </IonFooter>
+
+</IonPage>
 
 
   );
