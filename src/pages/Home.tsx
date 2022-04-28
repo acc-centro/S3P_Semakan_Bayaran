@@ -1,5 +1,5 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import React from 'react';
+import { IonFooter, IonLabel, IonCard, IonText, IonButton, IonInput, IonHeader, IonItem, IonPage, IonTitle, IonToolbar, IonCheckbox, IonCardSubtitle, IonCardContent } from '@ionic/react';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -7,19 +7,48 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle class = "ion-text-center"><h1>Semakan Bayaran</h1></IonTitle>
+          <IonText class="ion-text-center"><p>kerajaan Negeri Sabah</p></IonText>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
-      </IonContent>
-    </IonPage>
+
+<IonCard>
+<IonCardContent>
+<form className="ion-padding">
+  <IonItem>
+    <IonLabel position="floating">No.MyKad</IonLabel>
+    <IonInput type ="text"  />
+  </IonItem>
+
+  <IonItem>
+    <IonLabel position="floating">No.Akaun Bank</IonLabel>
+    <IonInput type="number" maxlength={16} />
+  </IonItem>
+
+  <IonItem lines="none">
+    <IonLabel>Remember Me</IonLabel>
+    <IonCheckbox defaultChecked={true} slot="start" />
+  </IonItem>
+
+  <IonButton className="ion-margin-top" type="submit" expand="block">
+    Cari Maklumat
+  </IonButton>
+
+</form>
+</IonCardContent>
+</IonCard>
+
+<IonFooter>
+<IonCardSubtitle class="ion-text-center">
+    2022 © Kerajaan Negeri Sabah
+  </IonCardSubtitle>
+</IonFooter>
+  </IonPage>
+
+
   );
 };
+
+
 
 export default Home;
