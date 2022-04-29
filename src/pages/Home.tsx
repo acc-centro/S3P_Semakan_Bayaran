@@ -30,7 +30,7 @@ import { search} from 'ionicons/icons';
 const Home: React.FC = () => {
   return (
     <IonPage>
-    <style>{"body { background-color: #93CAED; }"}</style>
+    <style>{"body { background-color: #428cff; }"}</style>
     <IonCard color="dark">
 
        <IonHeader>
