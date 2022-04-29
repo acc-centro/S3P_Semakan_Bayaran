@@ -16,7 +16,9 @@ import {
   IonImg,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonDatetime,
+  IonThumbnail
 
 } from '@ionic/react';
 
