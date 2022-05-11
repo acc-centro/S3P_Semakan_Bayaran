@@ -111,15 +111,24 @@ const Home: React.FC = () => {
 
   <IonItem color="dark">
     <IonLabel position="floating" color="light">No.Kad Pengenalan</IonLabel>
-    <IonInput type="text" />
+    <IonInput 
+    type="text"
+    value={mykad}
+    onIonChange={(e) => setAkaunBank(e.detail.value!)}
+     />
   </IonItem>
 
   <IonItem color="dark">
     <IonLabel position="floating" color="light">No.Akaun Bank</IonLabel>
-    <IonInput type="number" maxlength={16} />
+    <IonInput 
+      type="number" 
+      maxlength={16} 
+      value={akaun_bank}
+      onIonChange={(e) => setAkaunBank(e.detail.value!)}
+      />
   </IonItem >
 
-  <IonButton className="ion-margin-top" type="submit" expand="block" href="/Lists">   
+  <IonButton className="ion-margin-top" onClick={handleLogin} expand="block">   
     <IonIcon icon={search} slot="start" />
       Cari Maklumat
   </IonButton>
