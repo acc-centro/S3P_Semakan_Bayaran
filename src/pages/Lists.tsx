@@ -9,12 +9,34 @@ import {
    IonCardSubtitle,
    IonButtons,
    IonBackButton,
-   IonItem
+   IonItem,
+   IonLabel,
+   IonGrid,
+   IonRow,
+   IonCol
   } from '@ionic/react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
+import axios from "axios";
 import './Home.css';
 
 const Lists: React.FC = () => {
+  const history = useHistory();
+  const [Vouchers, setVoucher] = useState<Array<any>>([]);
+  useEffect(() => {
+    const api = axios.create({
+      baseURL: 'https://s3p.sabah.gov.my/api/vouchers'
+    })
+    api.get("/vouchers")
+    .then(res => {
+      setVoucher(res.data.data)
+    })
+    .catch(error => {
+      console.log("Error fetching data")
+    })
+  }, [])
+
+
   return (
     <IonPage>
       <style>{"body { background-color: #93CAED; }"}</style>
@@ -24,30 +46,40 @@ const Lists: React.FC = () => {
         <IonToolbar color="primary">
 
         <IonButtons slot="start">
-          <IonBackButton defaultHref="Home" />
+          <IonBackButton defaultHref="/Home" />
         </IonButtons>
 
           <IonTitle>Senarai Pembayaran</IonTitle>
         </IonToolbar>
       </IonHeader>
+    
+    <IonGrid>
+      <IonRow>
+        <IonCol>
+          {Vouchers.map((voucher, i) => 
+          {
+            return(
+              <IonItem color="dark">
+                <IonCardContent className="ion-padding" color="light" >
+                  <IonLabel>
+                      <p style={{ paddingLeft:"10px"}}>{voucher.tarikh + " " + voucher.eft}</p>
+                      <p style={{ paddingLeft:"10px"}}>{voucher.baucar}</p>
+                  </IonLabel>
+                </IonCardContent>
+              </IonItem>
+            );
+          })}
+    </IonCol>
+    </IonRow>
+    </IonGrid>
+    </IonCard>
 
-      <IonItem color="dark">
-      <IonCardContent className="ion-padding" color="light" >Voucher details goes here</IonCardContent>
-      </IonItem>
-      <IonItem color="dark">
-      <IonCardContent className="ion-padding" color="light" >masi html mcm prlu loop ni</IonCardContent>
-      </IonItem>
-      <IonItem color="dark">
-      <IonCardContent className="ion-padding" color="light" >main2 dulu nnti bru try blik </IonCardContent>
-      </IonItem>
-
-      </IonCard>
-
-  <IonFooter>
+  <IonFooter class="ion-text-center" color="light">
     <IonCardSubtitle class="ion-text-center" color="light">
       2022 © Kerajaan Negeri Sabah
     </IonCardSubtitle>
   </IonFooter>
+
     </IonPage>
   );
 };

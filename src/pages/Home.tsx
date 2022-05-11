@@ -6,11 +6,8 @@ import {
   IonText, 
   IonButton, 
   IonInput, 
-  IonHeader, 
   IonItem, 
   IonPage, 
-  IonTitle, 
-  IonToolbar, 
   IonCardSubtitle, 
   IonCardContent, 
   IonImg,
@@ -18,8 +15,6 @@ import {
   IonRow,
   IonCol,
   IonAlert,
-  IonChip,
-  IonAvatar
 
 } from '@ionic/react';
 
@@ -36,6 +31,7 @@ const Home: React.FC = () => {
   const [akaun_bank, setAkaunBank] = useState<string>("10016027837636");
   const [iserror, setIserror] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+
   const handleLogin = () => {
     if (!mykad){
       setMessage("Please enter the correct identification number");
@@ -55,12 +51,12 @@ const Home: React.FC = () => {
     const api = axios.create({
       baseURL: 'https://s3p.sabah.gov.my/api/vouchers'
     })
-    api.post("/home", loginData)
+    api.post("/vouchers", loginData)
       .then(res => {
         history.push("/lists/" + mykad);
       })
       .catch(error=> {
-        setMessage("Authentication failure! Make sure your login data is correct");
+        setMessage("Authentication failure! Make sure your login data is correct.");
         setIserror(true);
       })
   };
